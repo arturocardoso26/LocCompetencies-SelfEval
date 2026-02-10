@@ -406,7 +406,6 @@ function buildResultsSection(strings) {
 
 // Set up event handlers and remaining functionality
 function setupEventHandlers(strings) {
-    console.log("Setting up event handlers with strings:", strings);
     // Chart data and configuration
     let resultsChart;
     
@@ -423,168 +422,18 @@ function setupEventHandlers(strings) {
     const dimensionStructure = createDimensionStructure(strings);
     
     // Career paths based on different skill combinations
-    const careerPaths = {
-        // Entry-level roles (requiring 2-3 level competencies)
-        'project_coordinator': {
-            name: getNestedProperty(strings, 'careerPaths.project_coordinator') || 'Project Coordinator',
-            requirements: {
-                language: 2,
-                research: 3,
-                market: 2,
-                gilt: 2,
-                technology: 2,
-                management: 3
-            }
-        },
-        'translation_apprentice': {
-            name: getNestedProperty(strings, 'careerPaths.translation_apprentice') || 'Translation Apprentice',
-            requirements: {
-                language: 3,
-                research: 3,
-                gilt: 3,
-                technology: 3,
-                management: 3
-            }
-        },
-        'qa_tester': {
-            name: getNestedProperty(strings, 'careerPaths.qa_tester') || 'Quality Assurance Tester',
-            requirements: {
-                language: 3,
-                research: 3,
-                market: 3,
-                gilt: 3,
-                technology: 3,
-                management: 3
-            }
-        },
-        'data_annotator': {
-            name: getNestedProperty(strings, 'careerPaths.data_annotator') || 'Data Annotator / LLM Trainer',
-            requirements: {
-                language: 3,
-                research: 3,
-                market: 3,
-                subject: 3,
-                technology: 3,
-                management: 3
-            }
-        },
-        // Mid-level and senior roles
-        'market_analyist': {
-            name: getNestedProperty(strings, 'careerPaths.market_analyist') || 'Market Analyst',
-            requirements: {
-                research: 4,
-                market: 4,
-                subject: 3
-            }
-        },
-        'translator': {
-            name: getNestedProperty(strings, 'careerPaths.translator') || 'MTranslator, Interpreter, Terminologist, Language Lead',
-            requirements: {
-                language: 4,
-                research: 4,
-                market: 3,
-                subject: 3,
-                gilt: 3,
-                technology: 3
-            }
-        },
-        'vendor_manager': {
-            name: getNestedProperty(strings, 'careerPaths.vendor_manager') || 'Vendor Manager',
-            requirements: {
-                language: 2,
-                research: 4,
-                market: 3,
-                subject: 3,
-                management: 4 
-            }
-        },
-        'project_manager': {
-            name: getNestedProperty(strings, 'careerPaths.project_manager') || 'Localization Project Manager',
-            requirements: {
-                language: 3,
-                research: 4,
-                market: 4,
-                subject: 4,
-                gilt: 4,
-                technology: 4,
-                management: 4
-            }
-        },
-        'loc_eng': {
-            name: getNestedProperty(strings, 'careerPaths.loc_eng') || 'Localization Engineer',
-            requirements: {
-                language: 3,
-                market: 3,
-                subject: 3,
-                research: 4,
-                gilt: 4,
-                technology: 4,
-                management: 3
-            }
-        },
-        'quality_manager': {
-            name: getNestedProperty(strings, 'careerPaths.quality_manager') || 'Localization Quality Manager',
-            requirements: {
-                language: 4,
-                research: 4,
-                market: 4,
-                subject: 4,
-                gilt: 4,
-                technology: 4,
-                management: 3
-            }
-        },
-        'solutions_arch': {
-            name: getNestedProperty(strings, 'careerPaths.solutions_arch') || 'Solutions Architect',
-            requirements: {
-                language: 3,
-                research: 4,
-                market: 4,
-                subject: 4,
-                gilt: 4,
-                technology: 4,
-                management: 3
-            }
-        },
-        'localization_trainer': {
-            name: getNestedProperty(strings, 'careerPaths.localization_trainer') || 'Localization Trainer',
-            requirements: {
-                language: 4,
-                research: 5,
-                market: 4,
-                subject: 4,
-                gilt: 4,
-                technology: 4,
-                management: 5
-            }
-        },
-        'program_manager': {
-            name: getNestedProperty(strings, 'careerPaths.program_manager') || 'Program Manager',
-            requirements: {
-                language: 3,
-                research: 4,
-                market: 4,
-                subject: 4,
-                gilt: 4,
-                technology: 3,
-                management: 5
-            }
-        },
-        'tech_dev': {
-            name: getNestedProperty(strings, 'careerPaths.tech_dev') || 'Technology Developer',
-            requirements: {
-                language: 3,
-                research: 4,
-                market: 4,
-                subject: 4,
-                gilt: 5,
-                technology: 5,
-                management: 4
-            }
-        }
-    };
+    const careerPaths = {};
+    const requirements = window.careerPathsConfig?.careerPathRequirements || {};
+    const names = strings.careerPathNames || {};
+
+    for (const pathId in requirements) {
+        careerPaths[pathId] = {
+            name: names[pathId] || pathId,
+            requirements: requirements[pathId]
+        };
+    }
     
-    // Development recommendations for each dimension
+    // Development recommendation fallbacks for each dimension
     const developmentRecommendations = {
         'language': getNestedProperty(strings, 'recommendations.language') || 'Improve your proficiency in additional languages.',
         'research': getNestedProperty(strings, 'recommendations.research') || 'Develop analytical skills through research projects.',
@@ -788,10 +637,10 @@ function setupEventHandlers(strings) {
             const strengths = sortedDimensions.filter(dimension => dimension.average >= 4);
             
             if (strengths.length === 0) {
-                const noStrengthsItem = document.createElement('li');
-                noStrengthsItem.textContent = getNestedProperty(strings, 'results.noStrengths') || 
+                const emergingCompetenciesItem = document.createElement('li');
+                emergingCompetenciesItem.textContent = getNestedProperty(strings, 'results.emergingCompetencies') || 
                     'You\'re building your foundation across all dimensions. Focus on areas that align with your career goals.';
-                strengthsList.appendChild(noStrengthsItem);
+                strengthsList.appendChild(emergingCompetenciesItem);
             } else {
                 for (const dimension of strengths) {
                     const strengthItem = document.createElement('li');
@@ -806,10 +655,10 @@ function setupEventHandlers(strings) {
             const improvements = sortedDimensions.filter(dimension => dimension.average < 4);
             
             if (improvements.length === 0) {
-                const noImprovementsItem = document.createElement('li');
-                noImprovementsItem.textContent = getNestedProperty(strings, 'results.noImprovements') || 
+                const ongoingGrowthItem = document.createElement('li');
+                ongoingGrowthItem.textContent = getNestedProperty(strings, 'results.ongoingGrowth') || 
                     'Excellent! All dimensions score 4 or above. You have strong competencies across the board.';
-                weaknessesList.appendChild(noImprovementsItem);
+                weaknessesList.appendChild(ongoingGrowthItem);
             } else {
                 for (const dimension of improvements) {
                     const weaknessItem = document.createElement('li');

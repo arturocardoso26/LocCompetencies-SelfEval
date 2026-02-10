@@ -1,0 +1,118 @@
+{
+  "careerPathRequirements": {
+    "project_coordinator": {
+      "language": 2,
+      "research": 3,
+      "market": 2,
+      "gilt": 2,
+      "technology": 2,
+      "management": 3
+    },
+    "translation_apprentice": {
+      "language": 3,
+      "research": 3,
+      "gilt": 3,
+      "technology": 3,
+      "management": 3
+    },
+    "qa_tester": {
+      "language": 3,
+      "research": 3,
+      "market": 3,
+      "gilt": 3,
+      "technology": 3,
+      "management": 3
+    },
+    "data_annotator": {
+      "language": 3,
+      "research": 3,
+      "market": 3,
+      "subject": 3,
+      "technology": 3,
+      "management": 3
+    },
+    "market_analyist": {
+      "research": 4,
+      "market": 4,
+      "subject": 3
+    },
+    "translator": {
+      "language": 4,
+      "research": 4,
+      "market": 3,
+      "subject": 3,
+      "gilt": 3,
+      "technology": 3
+    },
+    "vendor_manager": {
+      "language": 2,
+      "research": 4,
+      "market": 3,
+      "subject": 3,
+      "management": 4
+    },
+    "project_manager": {
+      "language": 3,
+      "research": 4,
+      "market": 4,
+      "subject": 4,
+      "gilt": 4,
+      "technology": 4,
+      "management": 4
+    },
+    "loc_eng": {
+      "language": 3,
+      "market": 3,
+      "subject": 3,
+      "research": 4,
+      "gilt": 4,
+      "technology": 4,
+      "management": 3
+    },
+    "quality_manager": {
+      "language": 4,
+      "research": 4,
+      "market": 4,
+      "subject": 4,
+      "gilt": 4,
+      "technology": 4,
+      "management": 3
+    },
+    "solutions_arch": {
+      "language": 3,
+      "research": 4,
+      "market": 4,
+      "subject": 4,
+      "gilt": 4,
+      "technology": 4,
+      "management": 3
+    },
+    "localization_trainer": {
+      "language": 4,
+      "research": 5,
+      "market": 4,
+      "subject": 4,
+      "gilt": 4,
+      "technology": 4,
+      "management": 5
+    },
+    "program_manager": {
+      "language": 3,
+      "research": 4,
+      "market": 4,
+      "subject": 4,
+      "gilt": 4,
+      "technology": 3,
+      "management": 5
+    },
+    "tech_dev": {
+      "language": 3,
+      "research": 4,
+      "market": 4,
+      "subject": 4,
+      "gilt": 5,
+      "technology": 5,
+      "management": 4
+    }
+  }
+}

@@ -57,9 +57,9 @@ This project is designed to be localized into multiple languages. Currently avai
 ### How to Localize
 
 1. Fork this repository
-2. Copy `en-us.json` and rename it to your target locale (e.g., `fr-fr.json`)
+2. Copy `strings_en-us.json` and rename it to your target locale (e.g., `strings_es-mx.json`)
 3. Translate all strings in the JSON file
-4. Copy `LocCompetencies_en-US.html` and rename it to match your locale (e.g., `LocCompetencies_fr-FR.html`)
+4. Copy `LocCompetencies_en-US.html` and rename it to match your locale (e.g., `LocCompetencies_es-MX.html`)
 5. Update the `<html lang="">` attribute and file references
 6. Test thoroughly
 7. Submit a pull request!
@@ -71,7 +71,7 @@ For students in the Website Localization class: Spanish localization will be ass
 ```
 .
 ├── LocCompetencies_en-US.html    # Main HTML file (English)
-├── en-us.json                     # English language strings
+├── strings_en-us.json                     # English language strings
 ├── evaluation.js                  # Core application logic
 ├── resource-loader.js             # Resource loading and language switching
 ├── locessential-styles.css        # Styling

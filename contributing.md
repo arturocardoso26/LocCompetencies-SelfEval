@@ -30,7 +30,7 @@ git checkout -b spanish-localization
 
 ### 3. Complete the Localization Tasks
 
-- Translate `en-us.json` → `es-mx.json`
+- Translate `strings_en-us.json` → `strings_es-mx.json`
 - Copy and adapt `LocCompetencies_en-US.html` → `LocCompetencies_es-MX.html`
 - Update language-specific elements (lang attribute, meta tags, etc.)
 
@@ -217,7 +217,7 @@ Have an idea? Create an issue describing:
    ```
    Add Spanish localization for UI strings
    
-   - Translated all strings in en-us.json to Spanish
+   - Translated all strings in the en-us.json to Spanish
    - Created es-mx.json with culturally appropriate adaptations
    - Updated HTML file with proper lang attributes
    ```

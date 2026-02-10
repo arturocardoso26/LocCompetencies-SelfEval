@@ -1,12 +1,10 @@
-// resource-loader.js - Integrated version with language picker functionality
+// resource-loader.js - Updated to load career paths config separately
 //
 // LANGUAGE SWITCHING CONFIGURATION:
 // To enable Spanish localization after translation is complete, find the 
 // SPANISH_COMING_SOON constant in the changeLanguage() method (around line 30)
 // and set it to false:
 //     const SPANISH_COMING_SOON = false;
-//
-// This will disable the "coming soon" message and allow actual language switching.
 //
 (function() {
     // ResourceLoader class
@@ -15,12 +13,14 @@
         this.resources = {
           json: false,
           styles: false,
-          scripts: false
+          scripts: false,
+          careerPaths: false  // NEW: Track career paths loading separately
         };
         this.callbacks = [];
         this.timeout = null;
         this.currentLanguage = this.getCurrentLanguage();
         this.strings = {}; // Will hold loaded language strings
+        this.careerPathsConfig = {}; // NEW: Will hold career paths scoring
         
         // Expose key methods globally
         window.changeLanguage = this.changeLanguage.bind(this);
@@ -52,7 +52,7 @@
         
         // Language file mapping
         const languagePaths = {
-          'en-US': 'LocCompetencies_en-US.html',
+          'en-US': 'index.html',
           'es-MX': 'LocCompetencies_es-MX.html'
         };
         
@@ -137,7 +137,7 @@
       
       // Load language-specific JSON
       loadLanguageStrings() {
-        const jsonFile = this.currentLanguage.toLowerCase() + '.json';
+        const jsonFile = 'strings_' + this.currentLanguage.toLowerCase() + '.json';
         console.log(`Loading language strings from: ${jsonFile}`);
         
         return fetch(jsonFile)
@@ -156,6 +156,29 @@
           .catch(error => {
             console.warn(`Error loading language strings: ${error.message}`);
             this.registerResource('json'); // Mark as loaded anyway, we'll use fallbacks
+          });
+      }
+      
+      // NEW: Load career paths configuration (language-neutral)
+      loadCareerPathsConfig() {
+        console.log('Loading career paths configuration...');
+        
+        return fetch('career-paths-config.json')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`Failed to load career-paths-config.json: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then(data => {
+            this.careerPathsConfig = data;
+            console.log('Career paths config loaded successfully');
+            window.careerPathsConfig = data; // Also store globally
+            this.registerResource('careerPaths');
+          })
+          .catch(error => {
+            console.warn(`Error loading career paths config: ${error.message}`);
+            this.registerResource('careerPaths'); // Mark as loaded anyway
           });
       }
       
@@ -201,7 +224,7 @@
         }
         
         // Load CSS
-        this.loadCSS('styles.css')
+        this.loadCSS('locessential-styles.css')
           .then(() => {
             this.registerResource('styles');
           })
@@ -211,6 +234,9 @@
         
         // Load language strings
         this.loadLanguageStrings();
+        
+        // NEW: Load career paths config
+        this.loadCareerPathsConfig();
         
         // Load scripts
         this.loadScripts(['https://cdn.jsdelivr.net/npm/chart.js', 'evaluation.js'])
