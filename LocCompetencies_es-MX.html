@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competencias fundamentales para la gestion en localización</title>
+    <meta name="description" content="Evalua tus fortalezas y áreas de oportunidad en la tipología de competencias fundamentales para la gestion en localización (LMCC en inglés) con esta herramienta de autoevaluación." />
+    <link rel="alternate" hreflang="en-US" href="index.html" />
+    <link rel="alternate" hreflang="es-MX" href="LocCompetencies_es-MX.html" />
+    <script src="resource-loader.js"></script>
+    <link rel="stylesheet" href="estilos-uic.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="language-picker">
+                <span>Idioma:</span>
+                <select id="language-select">
+                    <option value="en-US">Inglés</option>
+                    <option value="es-MX">Español</option>
+                </select>
+                <div id="language-error" style="display: none;" role="alert"></div>
+            </div>
+            <h1 id="main-title">Competencias fundamentales para la gestion en localización (LLMC)</h1>
+            <p id="main-subtitle">Herramienta de autoevaluación</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="introduction">
+            <h2 id="intro-title">Introducción a las LMCC</h2>
+            <p id="intro-text-1">La <a target="_blank" href="https://l10ncompetencies.wordpress.com">tipología de competencias fundamentales para la gestion en localización (LMCC)</a> es una jerarquía en el conocimiento y habilidades de localización, necesaria para la práctica profesional de la gestion en localización. La tipología de LMCC comprende siete aspectos, cada una con sus competencias y habilidades relacionadas.</p>
+            <p id="intro-text-2">Esta herramienta de autoevaluación te ayudará a evaluar tus fortalezas y tus áreas de oportunidad en estos aspectos, dándote una perspectiva de tus competencias en la gestion en localización.</p>
+            
+            <div class="dimensions-overview">
+                <h3 id="dimensions-title">Los siete aspectos</h3>
+                <ul>
+                    <li id="dim-language"><strong>Idioma, cultura y comunicación</strong> - Bilingüismo, conciencia cultural y comunicación efectiva</li>    
+                    <li id="dim-research"><strong>Investigación y razonamiento crítico</strong> - Habilidad analítica, aprendizaje independiente, y retroalimentación y evaluación</li>
+                    <li id="dim-market"><strong>Conocimiento del mercado</strong> - Conocimiento del sector, estándares, organizaciones y tendencias del mercado</li>                                    
+                    <li id="dim-subject"><strong>Experiencia en la materia</strong> - Seguridad de los datos, conocimiento legal, conocimiento específico del sector</li>
+                    <li id="dim-gilt"><strong>GILT</strong> - Globalización, Internacionalización, Localización y Traducción</li>
+                    <li id="dim-technology"><strong>Technología</strong> - Habilidades tecnológicas generales, plataformas de comunicación, herramientas de PM, CAT, DTP, Software/Juegos/Sitios web, MT, y más</li>
+                    <li id="dim-management"><strong>Gestion</strong> - Parte interesada, cuentas, proyectos, calidad, terminología, producción/operaciones y programas</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Empty container for evaluation section - Will be populated from JSON -->
+        <section id="evaluation" class="content-container hidden"></section>
+
+        <!-- Empty container for results section - Will be populated from JSON -->
+        <section id="results" class="content-container hidden"></section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p id="footer-text">Competencias fundamentales para la gestion en localización (LMCC) - Herramienta de autoevaluación <br> Localización al español de México por Arturo Cardoso</p>
+            <!-- <p id="footer-text">Mexican Spanish localization by Your Name Here</p> -->
+            <p id="footer-copyright">© 2026 LocEssentials (version en español)</p>
+        </div>
+    </footer>
+</body>
+</html>
